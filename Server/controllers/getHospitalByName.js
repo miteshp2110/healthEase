@@ -16,6 +16,7 @@ const fetchHospital=((req,res)=>{
         res.status(400).json({'error':'Invalid Request type'})
     }
     else{
+        console.log(Object.keys(query).length)
         res.status(200).json(queryParams)
     }
     const regex=/\s/g
