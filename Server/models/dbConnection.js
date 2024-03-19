@@ -11,17 +11,24 @@ const pool=new Pool({
 
     async function dbStatus(){
         try {
-            const result= await pool.query('select * from public."hData"')
-            console.log("Connection Status: ",result.rows.length>0)
+            const result= await pool.query('select * from test')
             return  result.rows.length>0           
             
         } catch (error) {
-            console.log("Connection Status: false")
             return false
         }    
     }
+    async function showStatus(){
+        if(await dbStatus()){
+            console.log("DB Status: True")
+        }
+        else{
+            console.log("Db Status False")
+        }
+    }
+    
 
 
-module.exports=pool
-module.exports=dbStatus
+module.exports={dbStatus,pool,showStatus}
+
 
