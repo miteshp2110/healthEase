@@ -13,7 +13,14 @@ const citySearch=(async (req,res)=>{
                 return res.status(400).json({'error':'Invalid Request type'})
             }
             else{
-                res.send("working+"+name+"|")
+                try {
+                    var result=await pool.query(`select * from cityList where cityName Ilike '${name}%'`)
+                    res.json({'result':result.rows})
+                    
+                } catch (error) {
+                    return res.status(404).json({'error':'Server Error'})
+                    
+                }
             }
         }
         else{
