@@ -25,7 +25,7 @@ const fetchHospital=((req,res)=>{
         res.status(200).json(queryParams)
     }
     
-    console.log(queryParams)
+    //console.log(queryParams)
     
 })
  

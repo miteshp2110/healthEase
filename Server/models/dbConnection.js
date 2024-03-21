@@ -6,8 +6,11 @@ const pool=new Pool({
     host:process.env.pgHost,
     database:process.env.pgDatabase,
     password:process.env.pgPassword,
-    port:process.env.pgPort
+    port:process.env.pgPort,
+    ssl:true
 })
+
+
 
     async function dbStatus(){
         try {
@@ -15,6 +18,7 @@ const pool=new Pool({
             return  result.rows.length>0           
             
         } catch (error) {
+            console.log(error)
             return false
         }    
     }
