@@ -1,20 +1,20 @@
 const {dbStatus,pool}=require('../models/dbConnection')
 const regex=/\s/
-const citySearch=(async (req,res)=>{
+const specialitySearch=(async (req,res)=>{
     
         if(await dbStatus()){
-            var name=req.query.name
-            if(name==null){
+            var specialization=req.query.specialization
+            if(specialization==null){
                 return res.status(400).json({'error':'Give a search paramater'})
             }
             
-            if(name.length==0 || regex.test(name))
+            if(specialization.length==0 || regex.test(specialization))
             {
                 return res.status(400).json({'error':'Invalid Request type'})
             }
             else{
                 try {
-                    var result=await pool.query(`select distinct city from hData where city Ilike '${name}%'`)
+                    var result=await pool.query(`select distinct hSpecialization from hData where hSpecialization Ilike '${specialization}%' or hSpecialization= 'Multi' `)
                     res.json({'result':result.rows})
                     
                 } catch (error) {
@@ -28,4 +28,4 @@ const citySearch=(async (req,res)=>{
         }
 
 })
-module.exports=citySearch
+module.exports=specialitySearch
