@@ -1,7 +1,6 @@
 const express=require('express')
 const router = require('./routes/hospitalRoute')
-const {dbStatus,showStatus} = require('./models/dbConnection')
-const {pool}=require('./models/dbConnection')
+const {showStatus} = require('./models/dbConnection')
 const app=express()
 require('dotenv').config() 
 

@@ -4,10 +4,8 @@ const specialitySearch = require('../controllers/specialitySearch')
 const router=express.Router()
 
 // routes for search 
-// '/seach/'
+// '/search/'
 router.route('/city').get(citySearch)  // '/search/city'
 router.route('/speciality').get(specialitySearch)
-
-router.route('/speciality')
 
 module.exports=router
